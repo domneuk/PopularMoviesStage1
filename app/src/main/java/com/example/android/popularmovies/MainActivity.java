@@ -2,8 +2,6 @@ package com.example.android.popularmovies;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Parcelable;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.popularmovies.utilities.MovieApiUtils;
 import com.example.android.popularmovies.utilities.NetworkUtils;
@@ -132,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 String jsonResponse = NetworkUtils.getResponseFromHttpUrl(apiUrl);
-                return MovieApiUtils.getListOfMoviesFromJson(MainActivity.this, jsonResponse);
+                return MovieApiUtils.getListOfMoviesFromJson(jsonResponse);
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;

@@ -25,6 +25,7 @@ public class Movie implements Parcelable {
     private Double userRating;
     private Date releaseDate;
 
+    @SuppressWarnings("unused")
     static final Parcelable.Creator<Movie> CREATOR
             = new Parcelable.Creator<Movie>() {
 
@@ -48,7 +49,7 @@ public class Movie implements Parcelable {
         this.releaseDate = releaseDate;
     }
 
-    public Movie(JSONObject movie){
+    private Movie(JSONObject movie){
         try {
             this.id = movie.getLong("id");
             this.title = movie.getString("title");

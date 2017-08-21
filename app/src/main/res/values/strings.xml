@@ -11,4 +11,5 @@
     <string name="title">Title</string>
     <string name="original_title">Original Title</string>
     <string name="movie_poster">Movie poster</string>
+    <string name="movie_poster_description">Movie poster</string>
 </resources>

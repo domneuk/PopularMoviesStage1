@@ -14,29 +14,29 @@ public final class NetworkUtils {
 
     private static final String TAG = NetworkUtils.class.getSimpleName();
 
-    public final static String API_BASE_URL = "https://api.themoviedb.org/3/movie/";
+    private final static String API_BASE_URL = "https://api.themoviedb.org/3/movie/";
 
-    public final static String API_ENDPOINT_TOPRATED = "top_rated";
-    public final static String API_ENDPOINT_POPULAR = "popular";
+    private final static String API_ENDPOINT_TOP_RATED = "top_rated";
+    private final static String API_ENDPOINT_POPULAR = "popular";
 
-    public final static String API_KEY_PARAM = "api_key";
-    public final static String API_KEY = "INSERT_YOUR_API_KEY_HERE";
+    private final static String API_KEY_PARAM = "api_key";
+    private final static String API_KEY = "INSERT_YOUR_API_KEY_HERE";
 
-    public final static String API_LANGUAGE_PARAM = "language";
-    public final static String API_LANGUAGE = "de-DE";
+    private final static String API_LANGUAGE_PARAM = "language";
+    private final static String API_LANGUAGE = "de-DE";
 
-    public final static String BASE_IMAGE_URL = "http://image.tmdb.org/t/p/";
-    public final static String DEFAULT_IMAGE_SIZE = "w185";
-    public final static String SMALL_IMAGE_SIZE = "w92";
-    public final static String BIG_IMAGE_SIZE = "w500";
+    private final static String BASE_IMAGE_URL = "http://image.tmdb.org/t/p/";
+    private final static String DEFAULT_IMAGE_SIZE = "w185";
+    private final static String SMALL_IMAGE_SIZE = "w92";
+    private final static String BIG_IMAGE_SIZE = "w500";
 
-    public static final String SORTING_TOP_RATED = "TOPRATED";
+    public static final String SORTING_TOP_RATED = "TOP_RATED";
     public static final String SORTING_POPULAR = "POPULAR";
 
     public static URL buildUrl(String sorting) {
         String endpoint;
         if (sorting.toUpperCase().equals(SORTING_TOP_RATED)) {
-            endpoint = API_ENDPOINT_TOPRATED;
+            endpoint = API_ENDPOINT_TOP_RATED;
         } else {
             endpoint = API_ENDPOINT_POPULAR;
         }
@@ -60,7 +60,7 @@ public final class NetworkUtils {
     public static Uri buildUri(String sorting) {
         String endpoint;
         if (sorting.toUpperCase().equals(SORTING_TOP_RATED)) {
-            endpoint = API_ENDPOINT_TOPRATED;
+            endpoint = API_ENDPOINT_TOP_RATED;
         } else {
             endpoint = API_ENDPOINT_POPULAR;
         }

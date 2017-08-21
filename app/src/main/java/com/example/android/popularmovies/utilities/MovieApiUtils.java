@@ -1,7 +1,5 @@
 package com.example.android.popularmovies.utilities;
 
-import android.content.Context;
-
 import com.example.android.popularmovies.Movie;
 
 import org.json.JSONArray;
@@ -13,13 +11,13 @@ import java.util.List;
 
 public final class MovieApiUtils {
 
-    public static List<Movie> getListOfMoviesFromJson(Context context, String apiJsonStr) throws JSONException {
+    public static List<Movie> getListOfMoviesFromJson(String apiJsonStr) throws JSONException {
 
         final String LIST_OBJECT = "results";
         final String ERROR_MSG = "status_message";
         final String ERROR_CODE = "status_code";
 
-        List<Movie> moviesList = null;
+        List<Movie> moviesList;
 
         JSONObject apiJson = new JSONObject(apiJsonStr);
 
