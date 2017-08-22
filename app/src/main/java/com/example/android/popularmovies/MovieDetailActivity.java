@@ -52,10 +52,10 @@ public class MovieDetailActivity extends AppCompatActivity {
 
                 titleView.setText(selectedMovie.getTitle());
                 originalTitleView.setText(selectedMovie.getOriginalTitle());
-                originalLanguageView.setText(selectedMovie.getOriginalLanguage());
+                originalLanguageView.setText(selectedMovie.getOriginalLanguage().toUpperCase());
                 userRatingBar.setRating(selectedMovie.getUserRating().floatValue());
                 Date releaseDate = selectedMovie.getReleaseDate();
-                String formattedDate = new SimpleDateFormat("dd.MM.YYYY", Locale.GERMANY).format(releaseDate);
+                String formattedDate = new SimpleDateFormat("dd.MM.yyyy", Locale.US).format(releaseDate);
                 releaseDateView.setText(formattedDate);
                 plotSynopsisView.setText(selectedMovie.getPlotSynopsis());
             } else
