@@ -25,8 +25,7 @@ public class Movie implements Parcelable {
     private Double userRating;
     private Date releaseDate;
 
-    @SuppressWarnings("unused")
-    static final Parcelable.Creator<Movie> CREATOR
+    public static final Parcelable.Creator<Movie> CREATOR
             = new Parcelable.Creator<Movie>() {
 
         public Movie createFromParcel(Parcel in) {
