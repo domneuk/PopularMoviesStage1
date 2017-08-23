@@ -1,7 +1,6 @@
 package com.example.android.popularmovies;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,10 +13,10 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.android.popularmovies.utilities.MovieApiUtils;
+import com.example.android.popularmovies.utilities.AsyncTaskHelper;
+import com.example.android.popularmovies.utilities.FetchMovieDataTask;
 import com.example.android.popularmovies.utilities.NetworkUtils;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,31 +112,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public class FetchMovieDataTask extends AsyncTask<String, Void, List<Movie>> {
+    public class FetchMovieDataTaskCompleteListener implements AsyncTaskHelper.AsyncTaskCompleteListener<List<Movie>> {
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            mLoadingIndicator.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected List<Movie> doInBackground(String... params) {
-            if (params.length == 0) return null;
-
-            String sorting = params[0];
-            URL apiUrl = NetworkUtils.buildUrl(sorting);
-
-            try {
-                String jsonResponse = NetworkUtils.getResponseFromHttpUrl(apiUrl);
-                return MovieApiUtils.getListOfMoviesFromJson(jsonResponse);
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(List<Movie> movies) {
+        public void onTaskComplete(List<Movie> movies) {
             mLoadingIndicator.setVisibility(View.INVISIBLE);
             if (movies != null) {
                 mMovieAdapter.setMovieData(movies);
@@ -150,8 +127,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadMovieData(String sort) {
+        mLoadingIndicator.setVisibility(View.VISIBLE);
         showGridView();
-        new FetchMovieDataTask().execute(sort);
+        new FetchMovieDataTask(this, new FetchMovieDataTaskCompleteListener()).execute(sort);
     }
 
     private void showGridView() {
