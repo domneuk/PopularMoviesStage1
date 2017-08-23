@@ -3,6 +3,8 @@ package com.example.android.popularmovies.utilities;
 import android.net.Uri;
 import android.util.Log;
 
+import com.example.android.popularmovies.BuildConfig;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -20,7 +22,7 @@ public final class NetworkUtils {
     private final static String API_ENDPOINT_POPULAR = "popular";
 
     private final static String API_KEY_PARAM = "api_key";
-    private final static String API_KEY = "INSERT_YOUR_API_KEY_HERE";
+    private final static String API_KEY = BuildConfig.MOVIE_DB_API_KEY;
 
     private final static String API_LANGUAGE_PARAM = "language";
     private final static String API_LANGUAGE = "de-DE";
